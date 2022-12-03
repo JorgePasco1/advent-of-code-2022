@@ -50,19 +50,16 @@ def score(a: str, b: str) -> int:
 
 def run():
     with open('./input', mode='r') as buffer:
-        data = buffer.read()
+        lines = buffer.read().splitlines()
 
     total = 0
-    lines = data.split('\n')
     for line in lines:
         codes = line.split()
         total += score(codes[0], codes[1])
     print(total)
 
 
-########## PART 2
-
-
+########## PART 2 #############
 REQUIRED_OUTCOME = {
     'X': LOSES,
     'Y': DRAWS,
