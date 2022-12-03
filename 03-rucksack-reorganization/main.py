@@ -15,7 +15,11 @@ def part_one():
 
 
 def shared_group_type(rucksacks: list[str]) -> str:
-    return next(iter(set(rucksacks[0]).intersection(set(rucksacks[1])).intersection(set(rucksacks[2]))))
+    return next(iter(set.intersection(*map(set, rucksacks))))
+
+
+def group_list(list_: list, group_length: int) -> list[list]:
+    return [list_[n: n + group_length] for n in range(0, len(list_), group_length)]
 
 
 def part_two():
@@ -24,7 +28,7 @@ def part_two():
     with open('./input', 'r') as buffer:
         rucksacks = buffer.read().splitlines()
 
-    rucksack_groups = [rucksacks[n: n + GROUP_LENGTH] for n in range(0, len(rucksacks), GROUP_LENGTH)]
+    rucksack_groups = group_list(rucksacks, GROUP_LENGTH)
     result = sum(map(priority, map(shared_group_type, rucksack_groups)))
     print(result)
 
