@@ -14,6 +14,7 @@ def part_one():
     print(result)
 
 
+########## PART 2 #############
 def shared_group_type(rucksacks: list[str]) -> str:
     return next(iter(set.intersection(*map(set, rucksacks))))
 
