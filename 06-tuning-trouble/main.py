@@ -8,12 +8,12 @@ def all_different(string: str) -> bool:
     return len(set(string)) == len(string)
 
 
-def find_unique_sequence_position(string: str, amount_: int) -> int:
+def find_unique_sequence_position(string: str, sequence_length: int) -> int:
     for idx in range(len(string)):
-        if idx < amount_:
+        if idx < sequence_length:
             continue
 
-        if all_different(string[idx - amount_: idx]):
+        if all_different(string[idx - sequence_length: idx]):
             return idx
     return 0
 
